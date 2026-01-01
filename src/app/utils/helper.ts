@@ -42,3 +42,10 @@ const PREDEFINED_TOKEN_NAMES = [
 
 export const getRandomTokenName = () =>
   PREDEFINED_TOKEN_NAMES[Math.floor(Math.random() * PREDEFINED_TOKEN_NAMES.length)];
+
+export function formatK(num: number) {
+    if (num >= 1000) {
+        return (num / 1000).toFixed(1) + "K";
+    }
+    return num.toString();
+}

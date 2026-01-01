@@ -2,7 +2,7 @@
 
 import { TooltipProps } from "@/app/types/interface";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import React, { useState } from "react";
+import { useState } from "react";
 
 
 export const Tooltip = ({ content, children }: TooltipProps) => {

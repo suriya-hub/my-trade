@@ -1,5 +1,5 @@
 import { TokenRow } from "./TokenRow";
-import { Token, TokenTableProps } from "../../types/interface";
+import { TokenTableProps } from "../../types/interface";
 import { memo } from "react";
 
 

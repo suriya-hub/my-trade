@@ -1,6 +1,4 @@
 import "react-toastify/dist/ReactToastify.css";
-
-// Generic wrapper for all toast types
 import { toast } from "react-toastify";
 
 export const showSuccess = (message: string) =>

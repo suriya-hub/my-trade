@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Token, TOKEN_STAGES, TokenStage, TokenState } from "../types/interface";
+import { Token, TokenState } from "../types/interface";
 import { TokensKey } from "../types/types";
 import { getRandomImage, getRandomStage, getRandomTokenName } from "../utils/helper";
 

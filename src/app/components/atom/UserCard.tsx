@@ -1,4 +1,3 @@
-// components/UserCard.tsx
 "use client";
 
 import { UserCardProps } from "@/app/types/interface";

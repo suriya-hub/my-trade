@@ -2,13 +2,11 @@
 
 import { Token } from "../../types/interface";
 import { TokenPriceCell } from "../molecules/TokenPriceCell";
-import { Badge } from "../atom/Badge";
-import { FaEdit, FaSearch, FaUser, FaGlobe, FaUsers, FaTrophy, FaCrown, FaBullseye, FaRainbow, FaRegUser, FaCodepen, FaBolt, FaCopy, FaStar, FaCheckCircle, FaCalendarAlt, FaRegClipboard, FaExclamationCircle } from "react-icons/fa";
-import { formatK } from "@/app/utils/format";
+import { FaSearch, FaUser, FaGlobe, FaUsers, FaTrophy, FaCrown, FaBullseye, FaRainbow, FaRegUser, FaCodepen, FaBolt, FaCopy, FaStar, FaCheckCircle, FaCalendarAlt, FaRegClipboard, FaExclamationCircle } from "react-icons/fa";
 import { Tooltip } from "../atom/Tooltip";
 import UserCard from "../atom/UserCard";
 import { copyToClipboard } from "@/app/utils/tokenUtils";
-import { shortAddress } from "@/app/utils/helper";
+import { formatK, shortAddress } from "@/app/utils/helper";
 
 
 export const TokenRow = ({ token, buyAmount }: { token: Token, buyAmount: number }) => {
@@ -34,7 +32,7 @@ export const TokenRow = ({ token, buyAmount }: { token: Token, buyAmount: number
         {/* Left: Image */}
         <div className="inline-flex flex-col items-center max-w-[56px]">
           <div className="flex items-center gap-3 border-[2px] border-blue-800 rounded cursor-pointer group">
-            <div className="relative w-14 h-14 bg-gray-700 flex items-center justify-center">
+            <div className="relative w-16 h-16 bg-gray-700 flex items-center justify-center">
               <Tooltip
                 content={
                   <div className="w-[260px] h-[260px] rounded-lg overflow-hidden bg-black">
@@ -50,7 +48,7 @@ export const TokenRow = ({ token, buyAmount }: { token: Token, buyAmount: number
                 <img
                   src={token.image}
                   alt={token.name}
-                  className="w-14 h-14 rounded object-cover cursor-pointer"
+                  className="w-16 h-16 rounded object-cover cursor-pointer"
                 />
               </Tooltip>
 

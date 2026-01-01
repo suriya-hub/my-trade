@@ -4,10 +4,7 @@ import { CommonModalProps } from "@/app/types/interface";
 import { useState } from "react";
 import { FaTimes, FaUserShield, FaShieldAlt, FaShieldVirus, FaInfoCircle } from "react-icons/fa";
 import { Tooltip } from "./Tooltip";
-
-
-
-type MevMode = "off" | "reduced" | "secure";
+import { MevMode } from "@/app/types/types";
 
 export const CommonModal = ({
     isOpen,
