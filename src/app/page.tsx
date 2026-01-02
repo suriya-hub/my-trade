@@ -5,7 +5,7 @@ import { useState, useMemo, useEffect } from "react";
 import { RootState } from "./store";
 import { useWebSocketMock } from "./hooks/useWebSocketMock";
 import { TokenTable } from "./components/organisms/TokenTable";
-import { CommonModal } from "./components/atom/Model";
+import { CommonModal, SearchModal } from "./components/atom/Model";
 
 import {
   FaBolt,
@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa";
 import { PType, SortKey, SortOrder } from "./types/types";
 import { sortTokens } from "./utils/helper";
-import { setBuyAmount } from "./store/tokenSlice";
+import { closeSearchModal, setBuyAmount } from "./store/tokenSlice";
 import AxiomPulseHeader from "./components/organisms/header";
 import { TokenRowSkeleton } from "./components/atom/Skeleton";
 
@@ -31,6 +31,8 @@ export default function Page() {
   const tokensA = useSelector((state: RootState) => Object.values(state.tokens.tokensA));
   const tokensB = useSelector((state: RootState) => Object.values(state.tokens.tokensB));
   const tokensC = useSelector((state: RootState) => Object.values(state.tokens.tokensC));
+  const isSearchOpen = useSelector((state: RootState) => state.tokens.isOpen);
+
 
   /* ---------- STATE ---------- */
   const dropList = [
@@ -48,18 +50,18 @@ export default function Page() {
     useState<Record<string, PType>>({
       "New Pair": "P1",
       "Final Stretch": "P1",
-      Migrated: "P1",
+      "Migrated": "P1",
     });
   const [sortByColumn, setSortByColumn] =
     useState<Record<string, { key: SortKey; order: SortOrder }>>({
-      "New Pair": { key: "time", order: "desc" },
-      "Final Stretch": { key: "time", order: "desc" },
-      Migrated: { key: "time", order: "desc" },
+      "New Pair": { key: "name", order: "desc" },
+      "Final Stretch": { key: "name", order: "desc" },
+      "Migrated": { key: "name", order: "desc" },
     });
   const [modalColumn, setModalColumn] = useState<string | null>(null);
   const buyAmount = useSelector((state: RootState) => state.tokens.buyAmount);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -118,19 +120,6 @@ export default function Page() {
                               setSelectedByColumn((prev) => ({
                                 ...prev,
                                 [col.title]: p,
-                              }));
-
-                              setSortByColumn((prev) => ({
-                                ...prev,
-                                [col.title]: {
-                                  key:
-                                    p === "P1"
-                                      ? "time"
-                                      : p === "P2"
-                                        ? "volume"
-                                        : "price",
-                                  order: "desc",
-                                },
                               }));
                             }}
                             onClick={() => setModalColumn(col.title)}
@@ -205,6 +194,10 @@ export default function Page() {
             onClose={() => setModalColumn(null)}
           />
         )}
+
+        <SearchModal
+          isOpen={isSearchOpen}
+        />
       </div>
     </>
   );

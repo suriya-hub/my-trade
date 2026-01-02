@@ -86,6 +86,7 @@ export interface TokenActionsProps {
 export interface TokenTableProps {
   tokens: Token[];
   buyAmount: number;
+  search?: string;
 }
 
 export interface TokenState {
@@ -98,8 +99,16 @@ export interface TokenState {
     C: number;
   };
 }
-
 export interface CopyToastOptions {
   message?: string;
   icon?: ReactNode;
+}
+
+export interface SearchModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export interface SearchModalState {
+  isOpen: boolean;
 }

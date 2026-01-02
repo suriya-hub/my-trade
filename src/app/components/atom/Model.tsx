@@ -1,10 +1,29 @@
 "use client";
 
-import { CommonModalProps } from "@/app/types/interface";
+import { CommonModalProps, SearchModalProps, SearchModalState } from "@/app/types/interface";
 import { useState } from "react";
 import { FaTimes, FaUserShield, FaShieldAlt, FaShieldVirus, FaInfoCircle } from "react-icons/fa";
 import { Tooltip } from "./Tooltip";
 import { MevMode } from "@/app/types/types";
+import { FC } from "react";
+import { FaFire, FaDollarSign } from "react-icons/fa";
+import { TbFlame } from "react-icons/tb";
+import { closeSearchModal } from "@/app/store/tokenSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState, } from "@/app/store";
+import { TokenSearch } from "../molecules/TokenSearch";
+
+
+
+
+const tags = [
+    { text: "Pump", icon: <FaFire className="w-3 h-3 inline-block mr-1" /> },
+    { text: "Bonk", icon: <TbFlame className="w-3 h-3 inline-block mr-1" /> },
+    { text: "Bags", icon: <FaDollarSign className="w-3 h-3 inline-block mr-1" /> },
+    { text: "USD1", icon: <FaDollarSign className="w-3 h-3 inline-block mr-1" /> },
+    { text: "OG Mode" },
+    { text: "Graduated" },
+];
 
 export const CommonModal = ({
     isOpen,
@@ -172,3 +191,52 @@ export const CommonModal = ({
         </div >
     );
 };
+
+export const SearchModal: FC<SearchModalState> = ({ isOpen }) => {
+
+    const dispatch = useDispatch<AppDispatch>();
+    const tokensA = useSelector((state: RootState) => Object.values(state.tokens.tokensA));
+    const [search, setSearch] = useState("");
+    if (!isOpen) return null;
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+            <div className="bg-[#181818] w-[50em] h-[calc(100vh-40px)] my-[20px] p-6 rounded-lg shadow-xl flex flex-col overflow-hidden">
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                    {tags.map((tag) => (
+                        <span
+                            key={tag.text}
+                            className="flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-md bg-[#0e0f11] text-gray-100 cursor-pointer hover:bg-gray-700"
+                        >
+                            {tag.icon}
+                            {tag.text}
+                        </span>
+                    ))}
+                </div>
+
+                {/* Search Input */}
+                <div className="relative mb-4">
+                    <input
+                        type="text"
+                        placeholder="Search by name, ticker, or CA..."
+                        className="w-full h-[50px] bg-[#0e0f11] text-gray-100 placeholder-gray-500 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <button
+                        onClick={() => dispatch(closeSearchModal())}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200 text-sm font-bold cursor-pointer"
+                    >
+                        Esc
+                    </button>
+                </div>
+
+                {/* History Section */}
+                <div className="text-gray-400 text-sm">History</div>
+                <TokenSearch tokens={tokensA} buyAmount={0} search={search}
+                />
+            </div>
+        </div>
+    );
+};
+

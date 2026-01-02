@@ -1,9 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Token, TokenState } from "../types/interface";
+import { SearchModalState, Token, TokenState } from "../types/interface";
 import { TokensKey } from "../types/types";
 import { getRandomImage, getRandomStage, getRandomTokenName } from "../utils/helper";
-
-
 
 /* --------------------------
  Create mock token
@@ -77,7 +75,6 @@ const LIMITS: Partial<Record<NumericTokenKey, number>> = {
  Randomize stats (WebSocket-like)
 ---------------------------*/
 const randomizeTokenStats = (token: Token) => {
-  // Price-like values
   token.price = Math.max(0, token.price + (Math.random() - 0.5) * 20);
   token.volume = Math.max(0, token.volume + Math.random() * 500);
   token.liquidity = Math.max(0, token.liquidity + Math.random() * 300);
@@ -90,7 +87,6 @@ const randomizeTokenStats = (token: Token) => {
     Math.min(20, token.change24h + (Math.random() - 0.5) * 2)
   );
 
-  // Counter fields
   COUNTER_KEYS.forEach(key => {
     const delta = Math.floor(Math.random() * 3) - 1; // -1 | 0 | +1
     const next = Math.max(0, token[key] + delta);
@@ -101,31 +97,31 @@ const randomizeTokenStats = (token: Token) => {
 /* --------------------------
  Initial State
 ---------------------------*/
-const initialState: TokenState = {
+interface CombinedState extends TokenState, SearchModalState {}
+
+const initialState: CombinedState = {
   tokensA: createRandomTokens(2),
   tokensB: createRandomTokens(2),
   tokensC: createRandomTokens(2),
-  buyAmount: {
-    A: 0,
-    B: 0,
-    C: 0,
-  },
+  buyAmount: { A: 0, B: 0, C: 0 },
+  isOpen: false, // search modal
 };
 
-
+/* --------------------------
+ Slice
+---------------------------*/
 export const tokenSlice = createSlice({
   name: "tokens",
   initialState,
   reducers: {
+    // Token actions
     updateRandomToken: (
       state,
       action: PayloadAction<{ set: "A" | "B" | "C" }>
     ) => {
       const setKey: TokensKey = `tokens${action.payload.set}`;
-
       const tokens = Object.values(state[setKey]);
       if (!tokens.length) return;
-
       const token = tokens[Math.floor(Math.random() * tokens.length)];
       randomizeTokenStats(token);
     },
@@ -135,12 +131,29 @@ export const tokenSlice = createSlice({
     ) => {
       state.buyAmount[action.payload.set] = action.payload.value;
     },
+
+    // Search modal actions
+    openSearchModal: (state) => {
+      state.isOpen = true;
+    },
+    closeSearchModal: (state) => {
+      state.isOpen = false;
+    },
+    toggleSearchModal: (state) => {
+      state.isOpen = !state.isOpen;
+    },
   },
 });
-
 
 /* --------------------------
  Exports
 ---------------------------*/
-export const { updateRandomToken, setBuyAmount } = tokenSlice.actions;
+export const {
+  updateRandomToken,
+  setBuyAmount,
+  openSearchModal,
+  closeSearchModal,
+  toggleSearchModal,
+} = tokenSlice.actions;
+
 export default tokenSlice.reducer;

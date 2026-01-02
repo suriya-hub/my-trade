@@ -39,3 +39,23 @@ export const TokenRowSkeleton = () => {
     </div>
   );
 };
+
+export const TokenSearchSkeleton = () => (
+  <div className="flex items-center justify-between w-full bg-[#1b1d22] rounded-xl px-4 py-3 animate-pulse">
+    <div className="flex items-center gap-3">
+      <div className="w-10 h-10 rounded-md bg-gray-700" />
+      <div className="space-y-2">
+        <div className="w-24 h-3 bg-gray-700 rounded" />
+        <div className="w-16 h-2 bg-gray-700 rounded" />
+      </div>
+    </div>
+
+    <div className="flex gap-8">
+      <div className="w-16 h-3 bg-gray-700 rounded" />
+      <div className="w-12 h-3 bg-gray-700 rounded" />
+      <div className="w-12 h-3 bg-gray-700 rounded" />
+    </div>
+
+    <div className="w-8 h-8 rounded-full bg-gray-700" />
+  </div>
+);
