@@ -3,7 +3,7 @@
 import { CommonModalProps, SearchModalProps, SearchModalState } from "@/app/types/interface";
 import { useState } from "react";
 import { FaTimes, FaUserShield, FaShieldAlt, FaShieldVirus, FaInfoCircle } from "react-icons/fa";
-import { Tooltip } from "./Tooltip";
+import { Tooltip } from "../atom/Tooltip";
 import { MevMode } from "@/app/types/types";
 import { FC } from "react";
 import { FaFire, FaDollarSign } from "react-icons/fa";
@@ -11,7 +11,7 @@ import { TbFlame } from "react-icons/tb";
 import { closeSearchModal } from "@/app/store/tokenSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState, } from "@/app/store";
-import { TokenSearch } from "../molecules/TokenSearch";
+import { TokenSearch } from "./TokenSearch";
 
 
 

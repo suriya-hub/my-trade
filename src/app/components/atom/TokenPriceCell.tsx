@@ -1,7 +1,7 @@
 "use client";
 
 import { usePriceFlash } from "../../hooks/usePriceFlash";
-import { Price } from "../atom/Price";
+import { Price } from "./Price";
 
 export const TokenPriceCell = ({ price }: { price: number }) => {
   const flash = usePriceFlash(price);

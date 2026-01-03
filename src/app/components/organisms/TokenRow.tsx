@@ -1,7 +1,7 @@
 "use client";
 
 import { Token } from "../../types/interface";
-import { TokenPriceCell } from "../molecules/TokenPriceCell";
+import { TokenPriceCell } from "../atom/TokenPriceCell";
 import { FaSearch, FaUser, FaGlobe, FaUsers, FaTrophy, FaCrown, FaBullseye, FaRainbow, FaRegUser, FaCodepen, FaBolt, FaCopy, FaStar, FaCheckCircle, FaCalendarAlt, FaRegClipboard, FaExclamationCircle } from "react-icons/fa";
 import { Tooltip } from "../atom/Tooltip";
 import UserCard from "../atom/UserCard";

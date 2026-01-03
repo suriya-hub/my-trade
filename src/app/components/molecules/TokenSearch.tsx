@@ -2,7 +2,7 @@ import { memo, useEffect, useState } from "react";
 import { TokenTableProps } from "@/app/types/interface";
 import { formatK } from "@/app/utils/helper";
 import { FaBolt, FaLink, FaRegCopy } from "react-icons/fa";
-import { TokenSearchSkeleton } from "../atom/Skeleton";
+import { TokenSearchSkeleton } from "./Skeleton";
 
 export const TokenSearch = ({ tokens, buyAmount, search }: TokenTableProps) => {
     const [isLoading, setIsLoading] = useState(false);

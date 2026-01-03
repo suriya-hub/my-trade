@@ -1,8 +1,8 @@
 "use client";
 
 import { Token } from "../../types/interface";
-import { TokenPriceCell } from "../molecules/TokenPriceCell";
-import { Badge } from "../atom/Badge";
+import { TokenPriceCell } from "./TokenPriceCell";
+import { Badge } from "./Badge";
 
 export const TokenRow = ({ token }: { token: Token }) => (
   <tr className="hover:bg-gray-100 transition">

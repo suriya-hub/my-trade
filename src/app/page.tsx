@@ -5,7 +5,7 @@ import { useState, useMemo, useEffect } from "react";
 import { RootState } from "./store";
 import { useWebSocketMock } from "./hooks/useWebSocketMock";
 import { TokenTable } from "./components/organisms/TokenTable";
-import { CommonModal, SearchModal } from "./components/atom/Model";
+import { CommonModal, SearchModal } from "./components/molecules/Model";
 
 import {
   FaBolt,
@@ -18,7 +18,7 @@ import { PType, SortKey, SortOrder } from "./types/types";
 import { sortTokens } from "./utils/helper";
 import { closeSearchModal, setBuyAmount } from "./store/tokenSlice";
 import AxiomPulseHeader from "./components/organisms/header";
-import { TokenRowSkeleton } from "./components/atom/Skeleton";
+import { TokenRowSkeleton } from "./components/molecules/Skeleton";
 import { Tooltip } from "./components/atom/Tooltip";
 
 
