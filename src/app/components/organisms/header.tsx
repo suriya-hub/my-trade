@@ -21,7 +21,7 @@ export default function AxiomPulseHeader() {
 
                 {/* Left */}
                 <div className="flex items-center gap-4 sm:gap-6">
-                    <div className="flex items-center gap-2 text-white font-semibold text-sm">
+                    <div className="flex items-center gap-2 text-white font-semibold text-sm cursor-pointer">
                         <div className="w-6 h-6 bg-white/10 rounded flex items-center justify-center">
                             △
                         </div>
@@ -59,11 +59,11 @@ export default function AxiomPulseHeader() {
                 {/* Right */}
                 <div className="flex items-center gap-2 sm:gap-4">
                     {/* Network dropdown */}
-                    <button className="hidden sm:flex items-center gap-2 bg-[#121620] border border-white/10 rounded-full px-3 h-9 text-sm text-white">
+                    <button className="hidden sm:flex items-center gap-2 bg-[#121620] border border-white/10 rounded-full px-3 h-9 text-sm text-white cursor-pointer">
                         SOL <HiChevronDown className="text-xs" />
                     </button>
 
-                    <button className="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-full px-4 h-9">
+                    <button className="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-full px-4 h-9 cursor-pointer">
                         Deposit
                     </button>
 
@@ -72,7 +72,7 @@ export default function AxiomPulseHeader() {
                     <IconBtn><FaWallet /></IconBtn>
 
                     {/* Profile */}
-                    <div className="w-8 h-8 rounded-full bg-green-500 text-black text-xs font-bold flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-green-500 text-black text-xs font-bold flex items-center justify-center cursor-pointer">
                         A6
                     </div>
                 </div>
@@ -80,19 +80,19 @@ export default function AxiomPulseHeader() {
 
             {/* Sub Header */}
             <div className="hidden md:flex items-center justify-between px-4 sm:px-6 h-12 bg-[#0B0E14]">
-                <div className="flex items-center gap-2 text-white text-base font-medium">
+                <div className="flex items-center gap-2 text-white text-base font-medium cursor-pointer">
                     Pulse
                     <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
                         <MdOutlineViewList />
                     </div>
                 </div>
 
-                <div className="flex items-center gap-2 sm:gap-3">
+                <div className="flex items-center gap-2 sm:gap-3 cursor-pointer">
                     <ActionBtn><HiOutlineQuestionMarkCircle /></ActionBtn>
                     <ActionBtn><MdOutlineViewList /></ActionBtn>
                     <ActionBtn><FaGear /></ActionBtn>
 
-                    <button className="flex items-center gap-2 bg-[#121620] border border-white/10 rounded-full px-3 sm:px-4 h-8 text-sm text-white">
+                    <button className="flex items-center gap-2 bg-[#121620] border border-white/10 rounded-full px-3 sm:px-4 h-8 text-sm text-white cursor-pointer">
                         Display <HiChevronDown className="text-xs" />
                     </button>
                 </div>
@@ -103,7 +103,7 @@ export default function AxiomPulseHeader() {
 
 function IconBtn({ children }: { children: ReactNode }) {
     return (
-        <button className="w-9 h-9 rounded-full bg-[#121620] border border-white/10 flex items-center justify-center text-white/80 hover:text-white">
+        <button className="w-9 h-9 rounded-full bg-[#121620] border border-white/10 flex items-center justify-center text-white/80 hover:text-white cursor-pointer">
             {children}
         </button>
     );
@@ -111,7 +111,7 @@ function IconBtn({ children }: { children: ReactNode }) {
 
 function ActionBtn({ children }: { children: ReactNode }) {
     return (
-        <button className="w-8 h-8 rounded-full bg-[#121620] border border-white/10 flex items-center justify-center text-white/70 hover:text-white">
+        <button className="w-8 h-8 rounded-full bg-[#121620] border border-white/10 flex items-center justify-center text-white/70 hover:text-white cursor-pointer">
             {children}
         </button>
     );
